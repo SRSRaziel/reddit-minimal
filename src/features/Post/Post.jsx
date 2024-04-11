@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import './Post.css';
 import Card from '../../components/Card/Card';
+import Comment from "../Comment/Comment";
 import { TiArrowDownOutline, TiArrowDownThick, TiArrowUpOutline, TiArrowUpThick, TiMessage } from "react-icons/ti";
+import ReactLoading from 'react-loading';
+import shortenNumber from '../../utils/shortenNumber';
+import moment from "moment";
 
 const Post = (props) => {
 
     const [voteValue, setVoteValue] = useState(0);
+    const {post, onToggleComments} = props;
 
     const onHandleVote = (newValue) => {
         if (newValue === voteValue){
@@ -30,36 +35,74 @@ const Post = (props) => {
         }
         return <TiArrowDownOutline className="icon-action"/>
     }
+
+    const getVoteType = () => {
+        if (voteValue === 1){
+            return 'up-vote';
+        }
+        if (voteValue === -1){
+            return 'down-vote';
+        }
+
+        return '';
+    }
+
+    const renderComments = () => {
+        if (post.errorComments){
+            return(
+                <div>
+                    <h3> Error loading the comments...</h3>
+                </div>
+            );
+        }
+
+        if (post.loadingComments){
+            return(
+                <div>
+                    <ReactLoading/>
+                </div>
+            );
+        }
+
+        if (post.showingComments) {
+            return (
+                <div>
+                    {post.comments.map((comment) => (
+                        <Comment comment={comment} key={comment.id} />
+                    ))}
+                </div>
+            );
+        }
+
+        return null;
+    }
     
     return (
-        <article>
+        <article key={post.id}>
             <Card>
                 <div className="post-wrapper">
                     <div className="post-votes-container">
                         <button type="button" className={`icon-action-button up-vote ${voteValue === 1 && 'active'}`} onClick={() => onHandleVote(1)} aria-label="Up Vote">{renderUpVote()}</button>
-                        <p> Número </p>
+                        <p className={`post-votes-value ${getVoteType()}`}></p>
                         <button type="button" className={`icon-action-button down-vote ${voteValue === -1 && 'active'}`} onClick={() => onHandleVote(-1)} aria-label="Down Vote">{renderDownVote()}</button>
                     </div>
                     <div className="post-container">
 
-                        <h3 className="post-title">Título do Post</h3>
+                        <h3 className="post-title">{post.title}</h3>
 
                         <div className="post-image-container">
-                            <img src="" alt="" className="post-image"/>
+                            <img src={post.url} alt="" className="post-image"/>
                         </div>
 
                         <div className="post-details">
-                            <span className="author-details">
-                                Avatar
-                                <span className="author-username"> Nome do Autor </span>
-                            </span>
-                            <span> Moment </span>
+                            <span className="author-details"><span className="author-username">{post.author}</span></span>
+                            <span>{moment.unix(post.created_utc).fromNow()}</span>
                             <span className="post-comments-container">
-                                <button><TiMessage className="icon-action"/></button> 
-                                Nº de Comentários
+                                <button type="button" className={`icon-action-button ${post.showingComments && 'showing-comments'}`} onClick={() => onToggleComments(post.permalink)} aria-label="Show Comments"><TiMessage className="icon-action"/></button> 
+                                {shortenNumber(post.num_comments, 1)}
                             </span>
                         </div>
-                        Comentários
+                        {renderComments()}
                     </div>
                 </div>
             </Card>
