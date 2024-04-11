@@ -1,10 +1,11 @@
 import React from "react";
 import './Home.css';
+import Post from '../Post/Post';
 
-export default function Home(){
+const Home = () => {
     return (
-        <div>
-            posts
-        </div>
+        <Post/>
     )
 }
+
+export default Home;

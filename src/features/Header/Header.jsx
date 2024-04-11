@@ -5,7 +5,7 @@ import { HiOutlineSearch } from "react-icons/hi";
 import {useSelector, useDispatch} from 'react-redux';
 import { setSearchTerm } from '../../store/redditSlice';
 
-export default function Header() {
+const Header = () => {
 
     const [searchTermLocal, setSearchTermLocal] = useState('');
     const searchTerm = useSelector((state) => state.reddit.searchTerm);
@@ -37,3 +37,5 @@ export default function Header() {
         </header>
     )
 }
+
+export default Header;
