@@ -47,6 +47,24 @@ const Post = (props) => {
         return '';
     }
 
+    const renderMedia = () => {
+        if (post.is_video === true){
+            return (
+                <div className="post-image-container">
+                    <video src={post.media.reddit_video.fallback_url} width="100%" controls autoplay>Your browser does not support the video tag</video>
+                </div>
+            );
+        }
+
+        if (post.is_video === false){
+            return (
+                <div className="post-image-container">
+                    <img src={post.url} alt="" className="post-image"/>
+                </div>
+            );
+        }
+    }
+
     const renderComments = () => {
         if (post.errorComments){
             return(
@@ -90,9 +108,7 @@ const Post = (props) => {
 
                         <h3 className="post-title">{post.title}</h3>
 
-                        <div className="post-image-container">
-                            <img src={post.url} alt="" className="post-image"/>
-                        </div>
+                        {renderMedia()}
 
                         <div className="post-details">
                             <span className="author-details"><span className="author-username">{post.author}</span></span>

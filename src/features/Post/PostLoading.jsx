@@ -9,7 +9,7 @@ const PostLoading = () => {
         <article className="post">
             <div className="post-votes-container">
                 <button type="button" className="icon-action-button up-vote" aria-label="Up vote"><TiArrowUpOutline className="icon-action" /></button>
-                <Skeleton/>
+                <Skeleton width={20} height={40}/>
                 <button type="button" className="icon-action-button down-vote" aria-label="Down vote"><TiArrowDownOutline className="icon-action" /></button>
             </div>
             <div className="post-container">
@@ -18,10 +18,10 @@ const PostLoading = () => {
                     <Skeleton/>
                 </div>
                 <div className="post-details">
-                    <span><Skeleton/></span>
-                    <span><Skeleton/></span>
+                    <span><Skeleton width={100}/></span>
+                    <span><Skeleton width={100}/></span>
                     <span className="post-comments-container"><button type="button" className="icon-action-button" aria-label="Show comments"><TiMessage className="icon-action" /></button>
-                    <Skeleton/>
+                    <Skeleton width={15}/>
                     </span>
                 </div>
             </div>
