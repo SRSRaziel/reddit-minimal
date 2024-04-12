@@ -1,9 +1,9 @@
 .comment{
-    background: rgb(244 244 244);
+    background: rgb(231 231 231);
     margin: var(--spacing-1) 0;
     padding: var(--spacing-2);
     transition: box-shadow 0.1s ease-in;
-    border-radius: var(--border-radius);
+    border-radius: 10px;
 }
 
 .comment:hover{

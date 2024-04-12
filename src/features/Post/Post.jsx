@@ -83,7 +83,7 @@ const Post = (props) => {
                 <div className="post-wrapper">
                     <div className="post-votes-container">
                         <button type="button" className={`icon-action-button up-vote ${voteValue === 1 && 'active'}`} onClick={() => onHandleVote(1)} aria-label="Up Vote">{renderUpVote()}</button>
-                        <p className={`post-votes-value ${getVoteType()}`}></p>
+                        <p className={`post-votes-value ${getVoteType()}`}>{shortenNumber(post.ups, 1)}</p>
                         <button type="button" className={`icon-action-button down-vote ${voteValue === -1 && 'active'}`} onClick={() => onHandleVote(-1)} aria-label="Down Vote">{renderDownVote()}</button>
                     </div>
                     <div className="post-container">
