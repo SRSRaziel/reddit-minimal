@@ -1,28 +1,22 @@
 .post-wrapper {
     display: flex;
-    background-color: rgb(244 244 244);
-    border-radius: 10px;
-    padding: var(--spacing-2);
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-    width: 80%;
-    margin: 0 auto 20px;
 }
 
-.post-container{
+.post-container {
     width: 100%;
 }
 
-.post-details{
+.post-details {
     margin-top: var(--spacing-2);
     border-top: 1px solid var(--color-border);
     padding-top: var(--spacing-1);
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.post-details .author-username{
+.post-details .author-username {
     color: var(--color-branding);
     font-weight: bold;
 }
@@ -37,7 +31,7 @@
     width: 100%;
 }
 
-.post-title{
+.post-title {
     margin: 0;
     margin-bottom: var(--spacing-2);
     color: var(--color-text-header);
@@ -45,45 +39,48 @@
 
 .post-votes-container {
     margin-right: var(--spacing-3);
+}
+
+.post-votes-container {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.icon-action{
+.icon-action {
     font-size: 1.5rem;
 }
 
-.post-votes-container .post-votes-value{
+.post-votes-container .post-votes-value {
     margin: var(--spacing-1) 0;
     font-weight: bold;
 }
 
-.post-votes-values.up-vote{
+.post-votes-value.up-vote {
     color: var(--color-success) !important;
 }
 
-.post-votes-values.down-vote{
+.post-votes-value.down-vote {
     color: var(--color-alert) !important;
 }
 
-.up-vote:hover{
+.up-vote:hover {
     color: var(--color-success) !important;
 }
 
-.up-vote:active{
+.up-vote.active {
     color: var(--color-success) !important;
 }
 
-.down-vote:hover{
+.down-vote:hover {
     color: var(--color-alert) !important;
 }
 
-.down-vote:active{
+.down-vote.active {
     color: var(--color-alert) !important;
 }
 
-.icon-action-button{
+.icon-action-button {
     background: none;
     border: none;
     cursor: pointer;
@@ -94,25 +91,24 @@
     border-radius: var(--radius);
 }
 
-.icon-action-button:hover{
+.icon-action-button:hover {
     background: var(--color-on-hover);
 }
 
-.post-comments-container{
+.post-comments-container {
     display: flex;
     align-items: center;
 }
 
-.post-comments-container .icon-action{
+.post-comments-container .icon-action {
+    margin-right: var(--spacing-0);
+}
+
+.author-details {
     display: flex;
     align-items: center;
 }
 
-.author-details{
-    display: flex;
-    align-items: center;
-}
-
-.showing-comments{
+.showing-comments {
     color: var(--color-branding);
 }
